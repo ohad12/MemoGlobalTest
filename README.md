@@ -1,4 +1,4 @@
-# Readme File - Memo Global Text
+# Readme File - Memo Global Test
 
 This readme file provides instructions on how to initialize the database for a .NET web application using Entity Framework Core (EF Core)
 and the update database command.
