@@ -15,6 +15,13 @@ namespace MemoGlobalTest
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // To prevent browsers from making http requests from non allowed origins - CORS is the answer.
+            // If browsers receive a response header "allow-origin", "list of origins" then they will throw an error "blocked by CORS" 
+            // if the html/react app doesn't reside on a domain in that list.
+            // But, for API calls made via server side code / postman etc. there is no mechanism that will prevent the request from completing the request.
+            // To restrict requests from other domains (not browsers), we need to add
+            // another middleware that checks context.Request.Host.Host and validate from a list of allow Origins and if the domain is not allow throw an exception ("Origin is not allowed").
+            
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowSpecificOrigins",
